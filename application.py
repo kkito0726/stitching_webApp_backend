@@ -1,6 +1,6 @@
 from flask import Flask, make_response, jsonify, request
 from flask_cors import CORS
-import cv2, base64, io
+import cv2, base64, io, os
 import numpy as np
 
 application = Flask(__name__)
@@ -66,4 +66,4 @@ def parse():
         return make_response(jsonify(res))
 
 if __name__ == "__main__":
-        application.run(debug=False, host='0.0.0.0', port=8080)
+    application.run(debug=False, host='0.0.0.0', port=int(os.environ.get("PORT", 8000)))
